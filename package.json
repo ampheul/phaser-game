@@ -1,0 +1,19 @@
+{
+  "name": "phaser-game",
+  "version": "1.0.0",
+  "description": "idfk man it just wants a description idfk what to put dude",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ampheul/phaser-game.git"
+  },
+  "author": "thomas vandeven",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ampheul/phaser-game/issues"
+  },
+  "homepage": "https://github.com/ampheul/phaser-game#readme"
+}
