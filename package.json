@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/ampheul/phaser-game/issues"
   },
-  "homepage": "https://github.com/ampheul/phaser-game#readme"
+  "homepage": "https://github.com/ampheul/phaser-game#readme",
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "phaser-ce": "^2.9.4"
+  }
 }
