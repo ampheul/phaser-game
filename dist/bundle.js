@@ -153,7 +153,7 @@ function create () {
 
     var cameraSpeed = 4;
 
-    for (var i = 0; i < 150; i++)
+    for (var i = 0; i < 15; i++)
     {
         var squirt = game.add.sprite(game.world.randomX, game.world.randomY, 'logo');
 
@@ -179,7 +179,7 @@ function create () {
         if (this.time === undefined) {
             this.time = t;
         }
-        var frequency = 0.03;
+        var frequency = 0.05;
         var c = Math.cos(frequency*this.time);
         var s = Math.sin(frequency*this.time);
         this.centerX = game.camera.x + game.camera.width/2 + 300*c;
@@ -187,7 +187,7 @@ function create () {
         this.time++;
     }
 
-    for (var i = 0; i < 200; i++) {
+    for (var i = 0; i < 10; i++) {
         var squirt = game.add.sprite(game.world.randomX, game.world.randomY, 'logo');
 
         squirt.animations.add(
@@ -197,7 +197,7 @@ function create () {
             true);
 
         squirt.animations.play('idle');
-        squirt.update = lemniscate.bind(squirt, -i);
+        squirt.update = lemniscate.bind(squirt, -12*i);
         squirt.tint = 0xFFFFFF*Math.random();
     }
 
