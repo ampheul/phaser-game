@@ -32,26 +32,19 @@ var cursors;
 function create () {
 
     game.world.setBounds(0, 0, 2000, 2000);
-
+    game.stage.backgroundColor = '#222222';
     cursors = game.input.keyboard.createCursorKeys();
-    logo = game.add.sprite(400, 400, 'logo');
 
     var updateFunction = function(frequency, yAmplitude, xAmplitude) {
         this.time = this.time || 1;
         this.originX = this.originX || this.centerX;
         this.originY = this.originY || this.centerY;
-        this.centerY = this.originX + yAmplitude*Math.sin(frequency*this.time);
-        this.centerX = this.originY + xAmplitude*Math.cos(frequency*this.time);
+        this.centerY = this.originY + yAmplitude*Math.sin(frequency*this.time);
+        this.centerX = this.originX + xAmplitude*Math.cos(frequency*this.time);
 
         this.time++;
     };
-    logo.update = updateFunction.bind(
-        logo,
-        1/100,
-        0.1*(game.world.height - logo.height)/2,
-        0.1*(game.world.width - logo.width)/2);
-    logo.animations.add('idle', [0,1,2,3,4,5,6,7,8,9,10,11,12], 6, true);
-    logo.animations.play('idle');
+
 
 
     var cameraSpeed = 4;
@@ -63,7 +56,7 @@ function create () {
         squirt.animations.add(
             'idle',
             [0,1,2,3,4,5,6,7,8,9,10,11,12],
-            4 + 4 * Math.random(),
+            3 + 3 * Math.random(),
             true);
 
         squirt.animations.play('idle');
@@ -73,37 +66,69 @@ function create () {
             1/100*(1 + Math.random()),
             0.1*(1+Math.random())*(game.world.height - squirt.height)/2,
             0.1*(1+Math.random())*(game.world.width - squirt.width)/2);
+        squirt.tint = 0xFFFFFF*Math.random();
     }
 
     cursors = game.input.keyboard.createCursorKeys();
 
+    var lemniscate = function (t) {
+        if (this.time === undefined) {
+            this.time = t;
+        }
+        var frequency = 0.03;
+        var c = Math.cos(frequency*this.time);
+        var s = Math.sin(frequency*this.time);
+        this.centerX = game.camera.x + game.camera.width/2 + 300*c;
+        this.centerY = game.camera.y + game.camera.height/2 + 300*s/2*c;
+        this.time++;
+    }
+
+    for (var i = 0; i < 200; i++) {
+        var squirt = game.add.sprite(game.world.randomX, game.world.randomY, 'logo');
+
+        squirt.animations.add(
+            'idle',
+            [0,1,2,3,4,5,6,7,8,9,10,11,12],
+            3 + 3 * Math.random(),
+            true);
+
+        squirt.animations.play('idle');
+        squirt.update = lemniscate.bind(squirt, -i);
+        squirt.tint = 0xFFFFFF*Math.random();
+    }
 
 
+    logo = game.add.sprite(400, 400, 'logo');
+
+    logo.update = updateFunction.bind(
+        logo,
+        1/10,
+        0*0.1*(game.world.height - logo.height)/2,
+        0*0.1*(game.world.width - logo.width)/2);
+    logo.animations.add('idle', [0,1,2,3,4,5,6,7,8,9,10,11,12], 4, true);
+    logo.animations.play('idle');
 }
 
 function update() {
-    logo.play();
     if (cursors.up.isDown)
     {
         game.camera.y -= 4;
-        logo.originY-=4;
     }
     else if (cursors.down.isDown)
     {
         game.camera.y += 4;
-        logo.originY+=4;
     }
 
     if (cursors.left.isDown)
     {
         game.camera.x -= 4;
-        logo.originX-=4;
     }
     else if (cursors.right.isDown)
     {
         game.camera.x += 4;
-        logo.originX+=4;
     }
+    logo.originX = game.camera.x + game.camera.width/2;
+    logo.originY = game.camera.y + game.camera.height/2;
 }
 
 function render() {
