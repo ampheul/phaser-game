@@ -1,0 +1,31 @@
+[
+	{
+		"fileName": "squirtle.png",
+		"imgType" : "IMAGE"
+	},
+	{
+		"fileName" : "sonic_sheet.png",
+		"imgType"  : "SHEET",
+		"animations":
+		{
+			"walkLeft" :
+			[
+				1, 
+				2, 
+				3, 
+				4, 
+				5
+			]
+			"walkRight" :
+			[
+				6,
+				7,
+				8,
+				9,
+				10
+			]
+		},
+		"width"  : "32",
+		"height" : "32"
+	}
+]

@@ -1,10 +1,20 @@
 window.onload = function() {
 
-    //  Note that this html file is set to pull down Phaser 2.5.0 from the JS Delivr CDN.
-    //  Although it will work fine with this tutorial, it's almost certainly not the most current version.
-    //  Be sure to replace it with an updated version before you start experimenting with adding your own code.
+    import Data from 'data.json';
 
-    var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+    var PokeCard = {
+        image_file: "",
+        health: 100,
+        hunger: 1,  // decimal value from 0 to 1
+        happiness: 0.5, // decimal value from 0 to 1
+        level: 1, // level goes from 1 to 10
+        phaser_object: null;
+    };
+    var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {
+        preload: preload,
+        create: create,
+        update: update
+    });
 
     function preload () {
 
@@ -12,10 +22,15 @@ window.onload = function() {
 
     }
 
+
     function create () {
 
         var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
         logo.anchor.setTo(0.5, 0.5);
+
+    }
+
+    function update() {
 
     }
 
