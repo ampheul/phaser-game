@@ -190,19 +190,23 @@ function update() {
     if (cursors.up.isDown)
     {
         game.camera.y -= 4;
+        logo.originY-=4;
     }
     else if (cursors.down.isDown)
     {
         game.camera.y += 4;
+        logo.originY+=4;
     }
 
     if (cursors.left.isDown)
     {
         game.camera.x -= 4;
+        logo.originX-=4;
     }
     else if (cursors.right.isDown)
     {
         game.camera.x += 4;
+        logo.originX+=4;
     }
 }
 
